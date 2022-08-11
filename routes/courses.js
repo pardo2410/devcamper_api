@@ -1,11 +1,16 @@
 const express = require("express");
 
-const {getCourses} = require("../controllers/courses");
+// call the methods created folder controllers
+const {getCourses, getCourse} = require("../controllers/courses");
 
-const router = express.Router();
+const router = express.Router({mergeParams: true});
 
 router
     .route("/")
     .get(getCourses);
 
-module.exports = router;
+router
+    .route("/:id")
+    .get(getCourse);
+
+    module.exports = router;
